@@ -1,0 +1,18 @@
+import cv2
+image = cv2.imread(r"Open CVprojects/pika.png", cv2.IMREAD_COLOR)
+cv2.imshow("PHOTO",image)
+cv2.waitKey(0)
+
+
+picture = cv2.imread(r"Open CVprojects/pika.png",cv2.IMREAD_GRAYSCALE)
+cv2.imshow("PICTURE",picture)
+cv2.imwrite("grayimage.png",picture)
+cv2.waitKey(0)
+
+image1 = cv2.imread(r"Open Cvprojects/pika.png",cv2.IMREAD_COLOR)
+b,g,r=cv2.split(image1)
+cv2.imshow("IMAGE1",image1)
+cv2.imshow("bluesaturationimage",b)
+cv2.imshow("greensaturatioimage",g)
+cv2.imshow("redsaturationimage",r)
+cv2.waitKey(0)
