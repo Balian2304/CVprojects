@@ -1,8 +1,8 @@
 import cv2
-image1 = cv2.imread(r"image1.jpg",cv2.IMREAD_COLOR)
-image2 = cv2.imread(r"imag2.jpg",cv2.IMREAD_COLOR)
-image3 = cv2.imread(r"image3.jpg",cv2.IMREAD_COLOR)
-image4 = cv2.imread(r"image4.jpg",cv2.IMREAD_COLOR)
+image1 = cv2.imread(r"Open CVprojects/image1.jpg",cv2.IMREAD_COLOR)
+image2 = cv2.imread(r"Open CVprojects/imag2.jpg",cv2.IMREAD_COLOR)
+image3 = cv2.imread(r"Open CVprojects/image3.jpg",cv2.IMREAD_COLOR)
+image4 = cv2.imread(r"Open CVprojects/image4.jpg",cv2.IMREAD_COLOR)
 
 cv2.imshow("image3",image3)
 cv2.waitKey(0)
@@ -13,4 +13,48 @@ cv2.imshow("image5",image5)
 cv2.waitKey(0)
 image6 = cv2.subtract(image2,image1)
 cv2.imshow("image6",image6)
+cv2.waitKey(0)
+
+#resizing an image
+pika = cv2.imread(r"Open CVprojects/pika.png",cv2.IMREAD_COLOR)
+cv2.imshow("original pika",pika)
+cv2.waitKey(0)
+resizedpika = cv2.resize(pika,(300,300))
+cv2.imshow("resizedpika",resizedpika)
+cv2.waitKey(0)
+#blurring image
+#Gaussian blur
+pikachu = cv2.imread(r"Open CVprojects/pika.png",cv2.IMREAD_COLOR)
+cv2.imshow("Pikachu",pikachu)
+blurredpika = cv2.GaussianBlur(pikachu,(7,7),0)
+cv2.waitKey(0)
+cv2.imshow("blurred pikachu",blurredpika)
+cv2.waitKey(0)
+
+#Median blur
+
+pikachu2 = cv2.imread(r"Open CVprojects/pika.png",cv2.IMREAD_COLOR)
+halfblurredimage = cv2.medianBlur(pikachu2,19)
+cv2.imshow("medianblurred pikachu",pikachu2)
+cv2.waitKey(0)
+
+ronaldo = cv2.imread(r"Open CVprojects/cr7.jpeg",cv2.IMREAD_COLOR)
+cv2.imshow("Ronaldo",ronaldo)
+cv2.waitKey(0)
+ronaldomblur = cv2.medianBlur(ronaldo,19)
+cv2.imshow("Ronaldo Medianblur",ronaldomblur)
+cv2.waitKey(0)
+
+#bilateral blur
+ronaldobblur = cv2.bilateralFilter(ronaldo,7,70,50)
+cv2.imshow("ronaldo",ronaldobblur)
+cv2.waitKey(0)
+
+pikachu3 = cv2.imread(r"Open CVprojects/pika.png",cv2.IMREAD_COLOR)
+cv2.imshow("Pika",pikachu3)
+cv2.waitKey(0)
+import numpy as np
+kernel = np.ones((5,5),np.uint8)
+erodedimage = cv2.erode(pikachu3,kernel)
+cv2.imshow("erode",erodedimage)
 cv2.waitKey(0)
