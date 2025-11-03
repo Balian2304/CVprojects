@@ -1,0 +1,19 @@
+import cv2
+import numpy as np
+pikachu = cv2.imread(r"pika.png",cv2.IMREAD_COLOR)
+
+cv2.imshow("PIKACHU",pikachu)
+cv2.waitKey(0)
+
+grayimage = cv2.cvtColor(pikachu,cv2.COLOR_BGR2GRAY)
+cv2.imshow("gray",grayimage)
+cv2.waitKey(0)
+
+pikachu2 = cv2.imread(r"pika.png",cv2.IMREAD_COLOR)
+(row,col) = pikachu2.shape[0:2]
+for i in range(row):
+    for j in range(col):
+        pikachu2.mean(axis=2).astype(np.uint8)
+cv2.imshow("pika",pikachu2)
+cv2.waitKey(0)
+         
