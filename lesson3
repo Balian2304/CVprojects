@@ -4,10 +4,12 @@ pikachu = cv2.imread(r"pika.png",cv2.IMREAD_COLOR)
 
 cv2.imshow("PIKACHU",pikachu)
 cv2.waitKey(0)
-
+"""
 grayimage = cv2.cvtColor(pikachu,cv2.COLOR_BGR2GRAY)
 cv2.imshow("gray",grayimage)
 cv2.waitKey(0)
+
+cv2.destroyAllWindows()
 
 pikachu2 = cv2.imread(r"pika.png",cv2.IMREAD_COLOR)
 (row,col) = pikachu2.shape[0:2]
@@ -16,4 +18,19 @@ for i in range(row):
         pikachu2.mean(axis=2).astype(np.uint8)
 cv2.imshow("pika",pikachu2)
 cv2.waitKey(0)
-         
+cv2.destroyAllWindows()
+"""
+
+#rotation image
+rotatedpika = cv2.imread(r"pika.png",cv2.IMREAD_COLOR)
+(row,col) = rotatedpika.shape[0:2]
+matrix = cv2.getRotationMatrix2D((col/2,row/2),250,1)
+result = cv2.warpAffine(rotatedpika,matrix,(col,row))
+cv2.imshow("result",result)
+cv2.waitKey(0)
+
+#convert image from 1 colorframe to another
+pikachu2 = cv2.imread(r"pika.png",cv2.IMREAD_COLOR)
+hsvimage = cv2.cvtColor(pikachu2,cv2.COLOR_BGR2HSV)
+cv2.imshow("hsv",hsvimage)
+cv2.waitKey(0)
