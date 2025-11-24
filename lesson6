@@ -1,0 +1,39 @@
+import cv2
+import os
+from PIL import Image
+path = "images"
+os.chdir(path)
+meanwidth = 00
+meanheight = 00
+amountimages = len(os.listdir("."))
+sumwidth = 0
+sumheight = 0
+for file in os.listdir("."):
+    img = Image.open(file)
+    w,h = img.size
+    sumwidth += w
+    sumheight += h
+
+meanheight = sumheight // 6
+meanwidth = sumwidth // 6
+print(meanheight)
+print(meanwidth)
+for file in os.listdir("."):
+    if file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith(".png"):
+       image = Image.open(file)
+       resizedimage = image.resize((meanwidth,meanheight),Image.Resampling.LANCZOS)
+       resizedimage.save(resizedimage,"jpeg",quality=95)
+
+videoname = "videocollage.avi"
+images = []
+for image in os.listdir("."):
+    if file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith(".png"):
+        images.append(image)
+newimage = cv2.imread(images[0])
+height,width,layers = newimage.shape
+video = cv2.VideoWriter(videoname,0,1,(width,height))
+for image in images:
+    video.write(cv2.imread(image))
+
+cv2.destroyAllWindows()
+video.release()
